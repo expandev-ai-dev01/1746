@@ -7,6 +7,7 @@ import { config } from '@/config';
 import { errorMiddleware } from '@/middleware/error';
 import { notFoundMiddleware } from '@/middleware/notFound';
 import apiRoutes from '@/routes';
+import { runDatabaseMigrations } from './migrations/migration-runner';
 
 const app: Application = express();
 

@@ -59,8 +59,10 @@ export async function dbRequest(
     if (resultSetNames && resultSetNames.length > 0) {
       const namedResults: { [key: string]: IRecordSet } = {};
       resultSetNames.forEach((name, index) => {
+        const recordset = result.recordsets as any;
         namedResults[name] = {
-          recordset: result.recordsets[index] || [],
+          recordset:
+            Array.isArray(recordset) && Array.isArray(recordset[index]) ? recordset[index] : [],
           rowsAffected: result.rowsAffected,
         };
       });
